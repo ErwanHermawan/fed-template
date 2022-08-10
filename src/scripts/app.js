@@ -3,23 +3,11 @@ import { Scrolllable, BrowserCheck } from 'utilities';
 
 // --- components
 import {
-  Header,
   WindowScroll,
-  Example,
   WindowResize,
-  MainBanner,
-  Services,
-  Method,
-  Features,
-  Testimony,
-  Card,
-  WidgetArticle,
-  BlogBanner,
+  Header,
   Footer,
-  FormElement,
-  ServiceTabs,
-  Registration,
-  Plan
+  FormElement
 } from 'components';
 
 // --- App
@@ -48,23 +36,11 @@ const App = (() => {
       BrowserCheck.init();
 
       // --- Project
-      Header.init();
       WindowScroll.init();
-      Example.init();
       WindowResize.init();
-      MainBanner.init();
-      Services.init();
-      Method.init();
-      Features.init();
-      Testimony.init();
-      Card.init();
-      BlogBanner.init();
-      WidgetArticle.init();
+      Header.init();
       Footer.init();
       FormElement.init();
-      ServiceTabs.init();
-      Registration.init();
-      Plan.init();
     })(jQuery);
   };
 
