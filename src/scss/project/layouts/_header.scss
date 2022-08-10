@@ -1,0 +1,277 @@
+/* ==========================================================================
+Layout: Header
+========================================================================== */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: zi(header);
+  background-color: color(white);
+  width: 100%;
+  @include shadow(1);
+  transition: transform 0.35s ease;
+  padding: 16px 0;
+  @include medium {
+    &::before {
+      content: '';
+      position: fixed;
+      top: 72px;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      opacity: 0;
+      visibility: hidden;
+      background-color: rgba(color(secondary), 0.75);
+      transition: all 0.75s ease 0.65s;
+      @include x-small {
+        top: 64px;
+      }
+      .show-nav & {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0s;
+      }
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      right: -56px;
+      top: 96px;
+      z-index: 1;
+      background-image: url('../img/bg/dot-white.svg');
+      background-repeat: no-repeat;
+      width: 96px;
+      height: 96px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.75s ease 0s;
+      transform: translateX(16px);
+      .show-nav & {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0.75s;
+        transform: none;
+      }
+    }
+  }
+  @include x-small {
+    padding: 12px 0;
+  }
+  // Scrolldown
+  .scroll-down & {
+    transform: translateY(-100%);
+    transition: transform 0.5s ease;
+  }
+  // header on scroll
+  .header-on-scroll & {
+    transition: transform 0.5s ease;
+  }
+  &__content {
+    position: relative;
+    @include clearfix;
+  }
+  // header logo
+  &__logo {
+    float: left;
+    height: 40px;
+    margin: 4px 0;
+    margin-right: 86px;
+    @include remove-tap-highlight;
+    @include medium {
+      margin-right: 0;
+      height: 32px;
+    }
+    &__img {
+      display: block;
+      height: 100%;
+    }
+  }
+  // header menu
+  &__menu {
+    $hm: &;
+    float: left;
+    @include medium {
+      float: none;
+      @include scroll('y', 'touch', 'show');
+      position: fixed;
+      top: 72px;
+      right: 0;
+      bottom: 0;
+      width: 380px;
+      transform: scaleX(0);
+      background-image: color(gradient, 3);
+      padding: 48px 32px 64px;
+      transform-origin: right center;
+      transition: all 0.5s ease 0.75s;
+      .show-nav & {
+        transform: none;
+        transition-delay: 0s;
+      }
+    }
+    @include x-small {
+      top: 64px;
+      width: 100%;
+    }
+    &__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0;
+      @include medium {
+        margin-bottom: 24px;
+      }
+    }
+    &__item {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 32px;
+      &:last-child {
+        margin-right: 0;
+      }
+      @include medium {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 24px;
+        transform: translateY(16px);
+        opacity: 0;
+        transition: all 0.5s ease;
+        @include font-size(18);
+        font-weight: fw(500);
+        @for $i from 1 through 5 {
+          $delay: 350 - ($i * 50) + ms;
+          &:nth-child(#{$i}) {
+            transition-delay: $delay;
+          }
+        }
+        .show-nav & {
+          transform: translateY(0);
+          opacity: 1;
+          @for $i from 1 through 5 {
+            $delay: 300 + ($i * 50) + ms;
+            &:nth-child(#{$i}) {
+              transition-delay: $delay;
+            }
+          }
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+      @include small {
+        @include font-size(16);
+        margin-bottom: 16px;
+      }
+      &--active {
+        #{$hm} {
+          &__link {
+            color: color(primary);
+            @include medium {
+              position: relative;
+              color: color(white);
+              padding-left: 40px;
+              &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 24px;
+                height: 2px;
+                @include radius(0);
+                background-color: color(white);
+              }
+            }
+          }
+        }
+      }
+    }
+    &__link {
+      display: block;
+      padding: 12px 0;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      @include remove-tap-highlight;
+      &:hover {
+        color: color(primary);
+      }
+      @include medium {
+        padding: 8px 0;
+        color: color(white);
+        &:hover {
+          color: color(white);
+        }
+      }
+    }
+    &__btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      @include medium {
+        position: relative;
+        transform: translatey(16px);
+        opacity: 0;
+        top: 0;
+        left: 0;
+        z-index: zi(header-btn);
+        width: 100%;
+        transition: opacity 0.75s ease 0s, transform 0.75s ease 50ms,
+          background-color 0.2s ease, border 0.2s ease;
+      }
+      .show-nav & {
+        transform: none;
+        opacity: 1;
+        transition: background-color 0.2s ease, border 0.2s ease,
+          opacity 0.75s ease 0.65s, transform 0.5s ease 0.65s,
+          background-color 0.2s ease, border 0.2s ease;
+      }
+      .btn {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        @include medium {
+          min-width: 100%;
+          background-color: color(secondary);
+          color: color(white);
+          padding-top: 14px;
+          padding-bottom: 14px;
+          &:hover {
+            background-color: transparent;
+            border-color: color(secondary);
+            color: color(secondary);
+          }
+        }
+      }
+    }
+  }
+
+  .burger-menu {
+    display: none;
+    @include medium {
+      display: block;
+      float: right;
+      margin-right: -8px;
+      &__bar {
+        &:nth-child(2) {
+          transition-delay: 0.4s;
+        }
+        .show-nav & {
+          &:nth-child(1) {
+            transform: rotate(135deg) translate(6px, -7px);
+            transition-delay: 0.55s;
+          }
+          &:nth-child(2) {
+            transform: scaleX(0);
+            opacity: 0;
+            transition-delay: 0.2s;
+          }
+          &:nth-child(3) {
+            transform: rotate(-135deg) translate(4px, 6px);
+            transition-delay: 0.55s;
+            width: 24px;
+          }
+        }
+      }
+    }
+  }
+}

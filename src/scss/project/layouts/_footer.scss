@@ -1,0 +1,139 @@
+/* ==========================================================================
+   Layouts Footer
+   ========================================================================== */
+
+.footer {
+  padding: 48px 0;
+  background-color: color(white);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: zi(footer);
+  width: 100%;
+  @include shadow(0);
+  @include large {
+    padding: 40px 0;
+  }
+  @include medium {
+    padding: 32px 0;
+  }
+  @include small {
+    padding: 24px 0;
+    position: relative;
+  }
+  &__content {
+    @include clearfix;
+    position: relative;
+  }
+  &__logo {
+    text-decoration: none;
+    float: left;
+    @include remove-tap-highlight;
+    @include small {
+      display: block;
+      margin-bottom: 24px;
+    }
+    @include retina {
+      margin-bottom: 16px;
+    }
+    &__el {
+      height: 40px;
+      @include medium {
+        height: 32px;
+      }
+    }
+  }
+  &__sosmed {
+    float: right;
+    margin: 4px 0;
+    @include medium {
+      margin: 0;
+    }
+    @include small {
+      margin-bottom: 24px;
+    }
+    @include retina {
+      margin-bottom: 16px;
+    }
+    &__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      @include small {
+        margin-left: -4px;
+      }
+    }
+    &__item {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      width: 32px;
+      height: 32px;
+      margin-right: 8px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    &__link {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      text-decoration: none;
+      @include font-size(20);
+      line-height: 1 !important;
+      font-weight: fw(bold);
+      @include remove-tap-highlight;
+      i {
+        display: inline-block;
+        color: color(secondary);
+        transition: all 0.3s ease;
+        &:hover {
+          transform: translateY(-2px);
+        }
+      }
+    }
+    .facebook {
+      &:hover i {
+        color: color(social-media, facebook);
+      }
+    }
+    .twitter {
+      &:hover i {
+        color: color(social-media, twitter);
+      }
+    }
+    .instagram {
+      &:hover i {
+        color: color(social-media, instagram);
+      }
+    }
+    .linkedIn {
+      &:hover i {
+        color: color(social-media, linkedIn);
+      }
+    }
+  }
+  &__copyright {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    @include font-size(14);
+    color: color(secondary);
+    margin-bottom: 0;
+    @include small {
+      float: left;
+      width: 100%;
+      position: static;
+      top: 0;
+      left: 0;
+      transform: none;
+    }
+    @include x-small {
+      @include font-size(12);
+    }
+  }
+}

@@ -1,0 +1,48 @@
+/* ==========================================================================
+   Variable: Colors
+   ========================================================================== */
+
+// colors
+$colors: (
+  primary: #ff0021,
+  secondary: #12175e,
+  tertiary: #ff8d24,
+  black: (
+    1: #222222,
+    2: #3a3a3a
+  ),
+  grey: (
+    1: #616161,
+    2: #898989,
+    3: #eaeaea,
+    4: #e0e0e0,
+    5: #d8d8d8,
+    6: #f0f0f0
+  ),
+  gradient: (
+    1: linear-gradient(90deg, #ff0021 59.1%, #ff8d24 100%),
+    2:
+      linear-gradient(
+        89.83deg,
+        rgba(0, 0, 0, 0.7) 0.15%,
+        rgba(0, 0, 0, 0) 99.85%
+      ),
+    3: linear-gradient(180deg, #ff0021 0%, #ff8d24 100%)
+  ),
+  success: #28a745,
+  warning: #fcd664,
+  danger: #fc6464,
+  info: #17a2b8,
+  background: #ffedee,
+  white: #fff,
+  overlay: rgba(#000, 0.75),
+  social-media: (
+    facebook: #1877f2,
+    twitter: #1da1f2,
+    instagram: #833ab4,
+    whatsapp: #25d366,
+    youtube: #ff0000,
+    tiktok: #000,
+    linkedIn: #0077b5
+  )
+);
